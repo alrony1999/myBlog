@@ -2,10 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class,'index'])->name('home');
+Route::get('/', [PostController::class,'index'])->name('home');
 
 Route::get('/register', [RegisterController::class,'create']);
 Route::post('/register', [RegisterController::class,'store']);
@@ -33,3 +32,5 @@ Route::get('author/create/post', [AuthorController::class,'postList'])->name('au
 
 Route::get('admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
 Route::get('admin/author/list', [AdminController::class,'authorList'])->name('admin.authorList');
+
+Route::get('/posts/{post:slug}', [PostController::class,'show'])->name('posts.show');
