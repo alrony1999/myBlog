@@ -10,4 +10,8 @@ class AuthorController extends Controller
     {
         return view('author.dashboard');
     }
+    public function postList()
+    {
+        return view('author.posts');
+    }
 }

@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mr-5 pr-3">
             @auth
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -13,7 +13,14 @@
                     {{strtoupper(auth()->user()->name)}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">DashBoard</a>
+                    @author
+                    <a class="dropdown-item" href="{{route('author.dashboard')}}">DashBoard</a>
+                    <a class="dropdown-item" href="{{route('author.postList')}}">My All Post</a>
+                    @endauthor
+                    @admin
+                    <a class="dropdown-item" href="{{route('admin.dashboard')}}">DashBoard</a>
+                    <a class="dropdown-item" href="{{route('admin.authorList')}}">All Author</a>
+                    @endadmin
                     <a class="dropdown-item" href="" id="logout">Logout</a>
                 </div>
             </li>
