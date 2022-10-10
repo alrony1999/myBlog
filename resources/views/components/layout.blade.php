@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>My Blog</title>
 </head>
 
@@ -31,6 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{asset('js/app.js')}}"></script>
     @if(Session::has('success'))
     <script>
@@ -44,6 +46,25 @@
         toastr.clear()
     </script>
     @endif
+    <script>
+        function previewImage()
+        {
+            var file=$('input[type=file]').get(0).files[0];
+            if(file)
+            {
+                var reader=new FileReader();
+                reader.onload=function(){
+                    $('#post-thumbnail').attr('src',reader.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+        tinymce.init({
+            selector:'textarea',
+            plugins: 'powerpaste advcode table lists checklist',
+            toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+        });
+    </script>
 
 </body>
 </html>

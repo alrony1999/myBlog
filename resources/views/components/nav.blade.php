@@ -15,11 +15,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     @author
                     <a class="dropdown-item" href="{{route('author.dashboard')}}">DashBoard</a>
-                    <a class="dropdown-item" href="{{route('author.postList')}}">My All Post</a>
                     @endauthor
                     @admin
                     <a class="dropdown-item" href="{{route('admin.dashboard')}}">DashBoard</a>
-                    <a class="dropdown-item" href="{{route('admin.authorList')}}">All Author</a>
                     @endadmin
                     <a class="dropdown-item" href="" id="logout">Logout</a>
                 </div>

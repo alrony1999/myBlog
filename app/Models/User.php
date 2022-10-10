@@ -51,6 +51,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function scopeSearch($query, $search)
+    {
+        $query->when(
+            $search?? false,
+            fn ($query, $search) =>
+                $query->where('id', $search)
+                ->orWhere('name', 'Like', '%'.$search.'%')
+                ->orWhere('username', 'Like', '%'.$search.'%')
+        );
+    }
     public function posts()
     {
         return $this->hasMany(Post::class, 'author_id');
